@@ -1,3 +1,10 @@
+Universal Retreat Booking Site
+
+Created by Tyson Gyorfy
+
+Built with: React, Next.JS, Eslint, Prisma, SQLite, Typescript, Tailwind(CSS), IDE(Visual Studio), CLI(iTerm)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
