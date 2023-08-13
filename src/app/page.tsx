@@ -1,14 +1,37 @@
+//Pricing page w/ Itinerary voting page Todo 
 import Link from "next/link"
-import DynamicNavBar from "./components/DynamicNavBar"
-import { Hero } from "./components"
+import { prisma } from "./db"
+import { TodoItem } from "./components/TodoItem"
 
-export default function Home() {
+function getTodos() {
+    return prisma.todo.findMany()
+}
 
-  return (
+async function toggleTodo(id: string, complete: boolean) {
+    "use server"
+
+    await prisma.todo.update({ where: { id }, data: { complete }})
+
+}
+
+export default async function Pricing(){
+
+const todos = await getTodos()
+
+return (
     <>
-    <Hero />
-      <h1>Home</h1>
-      <Link href="/pricing">Pricing</Link>     
+        <header className="flex justify-between items-center">
+            <h1 className="text-2xl">Ty`s To-Do List</h1>
+                <Link className="border border-slate-300 px-2 py-1 rounded hover:bg-slate-700 fucus-within:bg-slate-700 outline-none" href="/new">
+                    Add +
+                </Link>
+        </header>
+        <ul className="pl-4">
+            {todos.map(todo => (
+                <TodoItem key={todo.id} {...todo} toggleTodo={toggleTodo}>
+                </TodoItem>
+            ))}
+        </ul>
     </>
-  )
+    )
 }

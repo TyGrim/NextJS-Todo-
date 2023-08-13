@@ -1,13 +1,11 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import NavBar from './components/NavBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Kood Fight Muay Thai',
-  description: `Thailand's All-inclusive Island Training Retreat`,
+  title: 'NEXT.JS TODO',
 }
 
 export default function RootLayout({
@@ -17,8 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-slate-800 text-slate-100 `}>
-        <NavBar />  
+      <body className={`${inter.className} bg-slate-800 p-6 border border-white rounded-md text-slate-100 `}>
         {children}
       </body>
     </html>
