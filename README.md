@@ -1,4 +1,4 @@
-Universal Retreat Booking Site
+Simple Todo list practice excersise
 
 Created by Tyson Gyorfy
 
