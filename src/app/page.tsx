@@ -1,4 +1,5 @@
 import Link from "next/link"
+import DynamicNavBar from "./components/DynamicNavBar"
 
 export default function Home() {
 
