@@ -1,29 +1,40 @@
-//dynamic NavBar
-import Link from "next/link"
+// components/NavBar.tsx
+"use client"
+import React, { useState } from 'react';
+import Link from 'next/link';
 
 interface NavItem {
-    id: number
-    title: string
-    link: string
+    id: number;
+    title: string;
+    link: string;
 }
 
-interface DynamicNavBarProps {
+interface NavBarProps {
     navItems: NavItem[];
 }
 
-const DynamicNavBar: React.FC<DynamicNavBarProps> = ({ navItems }) => {
+const NavBar: React.FC<NavBarProps> = ({ navItems }) => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
-        <nav className="p-4 flex justify-between items-center">
-            <h1 className=" uppercase ">Kood Fight</h1>
-            <ul className="flex gap-2">
-                {navItems.map(item => (
-                    <li key={item.id} className="flex bg-pink-400 border border-white px-4 py-2 rounded">
-                        <Link className="cursor-pointer p-1" href={item.link}>{item.title}</Link>
-                    </li>
-                ))}
-            </ul>
+        <nav className="bg-gray-900 p-4 text-white">
+            <div className="container mx-auto flex justify-between items-center">
+                <h1 className="text-lg font-bold">Kood Fight</h1>
+                <div className="lg:hidden cursor-pointer" onClick={toggleMenu}>
+                    &#9776;
+                </div>
+                <ul className={`lg:flex ${menuOpen ? 'block' : 'hidden'} lg:space-x-4`}>
+                    {navItems.map(item => (
+                        <li key={item.id}><Link href={item.link}>{item.title}</Link></li>
+                    ))}
+                </ul>
+            </div>
         </nav>
-    )
+    );
 }
 
-export default DynamicNavBar;
+export default NavBar;

@@ -11,7 +11,7 @@ function NavBar() {
     ];
 
     return (
-        <header className=''>
+        <header>
             <DynamicNavBar navItems={navItems} />
         </header>
     );
